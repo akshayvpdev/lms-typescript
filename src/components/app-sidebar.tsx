@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -12,19 +12,20 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { ROUTES } from "@/constants/routes";
 
 // This is sample data.
 const data = {
@@ -50,127 +51,93 @@ const data = {
       plan: "Free",
     },
   ],
+
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
+      url:ROUTES.DASHBOARD,
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
+      title: "Students",
+      url: "#",
+      icon: Bot,
+    },
+  ],
+
+  UNIVERSITY_COURSE: [
+    {
+      title: "Course",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
+      title: "Course type",
       url: "#",
       icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Documentation",
+      title: "University",
       url: "#",
       icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
     },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+
   ],
-  projects: [
+
+  CERTIFICATION_COURSE: [
     {
-      name: "Design Engineering",
+      title: "Course",
       url: "#",
-      icon: Frame,
+      icon: SquareTerminal,
+      isActive: true,
     },
     {
-      name: "Sales & Marketing",
+      title: "Category",
       url: "#",
-      icon: PieChart,
+      icon: Bot,
     },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
+
   ],
-}
+  ENGAGE: [
+    {
+      title: "Notifications ",
+      url: "#",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
+      title: "FAQ",
+      url: "#",
+      icon: Bot,
+    },
+    {
+      title: "Settings2",
+      url: "#",
+      icon: Bot,
+    },
+
+  ],
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain label="Main" items={data.navMain} />
+        <NavMain label="Certification Course" items={data.CERTIFICATION_COURSE} />
+        <NavMain label="University Course" items={data.UNIVERSITY_COURSE} />
+        <NavMain label="Engage" items={data.ENGAGE} />
+
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

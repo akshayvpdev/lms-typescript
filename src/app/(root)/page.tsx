@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 function page() {
   return (
-    <div>This is dashboard</div>
-  )
+    <div className="grid auto-rows-min gap-4 md:grid-cols-3 p-2">
+      <div className="aspect-video rounded-xl bg-muted" />
+      <div className="aspect-video rounded-xl bg-muted" />
+      <div className="aspect-video rounded-xl bg-muted" />
+    </div>
+  );
 }
 
-export default page
+export default page;

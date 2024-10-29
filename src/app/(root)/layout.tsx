@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "../../app/globals.css";
 import MainContent from "@/layouts/main-content";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -19,11 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SidebarProvider>
-
-        <AppSidebar />
-        <MainContent>{children}</MainContent>
+          <AppSidebar />
+          <MainContent>{children}</MainContent>
         </SidebarProvider>
-
       </body>
     </html>
   );
